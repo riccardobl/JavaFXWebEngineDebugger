@@ -19,6 +19,12 @@ Dependency `compile 'com.github.riccardobl:JavaFXWebEngineDebugger:-SNAPSHOT'`
   `JavaFXWebEngineDebuggerFactory.destroy((JavaFXWebEngineDebugger)debugger);`
 
 
+
+---
+See src/test/java/ for more details.
+
+---
+
 ##License:
 
 This library is released under the Unlicense (see LICENSE for more info).
