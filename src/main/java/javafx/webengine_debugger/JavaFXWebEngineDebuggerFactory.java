@@ -1,6 +1,8 @@
 package javafx.webengine_debugger;
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.util.Iterator;
+import java.util.Map.Entry;
 import java.util.WeakHashMap;
 
 import javafx.scene.web.WebEngine;
@@ -66,6 +68,14 @@ public final class JavaFXWebEngineDebuggerFactory{
 
 	public static synchronized void destroy(JavaFXWebEngineDebugger debugger){
 		debugger.stop();
+		Iterator<Entry<WebEngine,DebuggerReference>> references_i=_REFERENCES.entrySet().iterator();
+		while(references_i.hasNext()){
+			Entry<WebEngine,DebuggerReference> entry=references_i.next();
+			if(entry.getValue().get==debugger){
+				references_i.remove();
+				break;
+			}
+		}
 	}
 // #######	
 
