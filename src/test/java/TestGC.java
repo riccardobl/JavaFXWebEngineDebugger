@@ -8,7 +8,7 @@ public class TestGC extends Application{
 	public TestGC(){
 		for(int i=0;i<10;i++){
 			WebView wv=new WebView();
-			JavaFXWebEngineDebuggerFactory.create(ServerImpl.class,wv.getEngine(),8988+i);
+			JavaFXWebEngineDebuggerFactory.create(ServerImpl.class,wv.getEngine(),8988+i,null);
 			System.out.println("Create instance: "+i+" alive instances: "+JavaFXWebEngineDebuggerFactory.countInstances());
 		}
 		while(true){

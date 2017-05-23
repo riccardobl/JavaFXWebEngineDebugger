@@ -34,7 +34,10 @@ public class ServerImpl implements Server{
 			}
 
 			@Override
-			public void onError(WebSocket conn, Exception ex) {}			
+			public void onError(WebSocket conn, Exception ex) {
+				ex.printStackTrace();
+			
+			}
 		};
     }
 

@@ -6,6 +6,7 @@ import java.util.Map.Entry;
 import java.util.WeakHashMap;
 
 import javafx.scene.web.WebEngine;
+import javafx.webengine_debugger.translayer.TranslationLayer;
 
 /**
  * @author Riccardo Balbo
@@ -41,10 +42,15 @@ public final class JavaFXWebEngineDebuggerFactory{
 		return port;
 	}
 	
+	
 	public static synchronized JavaFXWebEngineDebugger create(Class<? extends Server> server_class,WebEngine engine,int port){
+		 return create(server_class, engine, port, null);
+	}
+	
+	public static synchronized JavaFXWebEngineDebugger create(Class<? extends Server> server_class,WebEngine engine,int port, TranslationLayer translayer){
 		try{			
 			if(port==0)port=getFreePort();
-			JavaFXWebEngineDebugger  debugger = new JavaFXWebEngineDebugger(server_class,engine,port);
+			JavaFXWebEngineDebugger  debugger = new JavaFXWebEngineDebugger(server_class,engine,port,translayer);
 			_REFERENCES.put(engine,new DebuggerReference(debugger));
 			debugger.start();
 			return debugger;
@@ -62,8 +68,13 @@ public final class JavaFXWebEngineDebuggerFactory{
 	
 	
 // #######	
+	
+
 	public static synchronized JavaFXWebEngineDebugger create(WebEngine engine,int port){
-		return create(DEFAULT_SERVER,engine,port);
+		return create(DEFAULT_SERVER,engine,port,null);
+	}
+	public static synchronized JavaFXWebEngineDebugger create(WebEngine engine,int port, TranslationLayer translayer){
+		return create(DEFAULT_SERVER,engine,port,translayer);
 	}
 
 	public static synchronized void destroy(JavaFXWebEngineDebugger debugger){
