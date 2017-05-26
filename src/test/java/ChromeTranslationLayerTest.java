@@ -20,7 +20,7 @@ public class ChromeTranslationLayerTest  extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		// Create the WebView
 		WebView wv=new WebView();
-		wv.getEngine().loadContent("<script>var i=0;setInterval(function(){console.log('abc'+(i++));},2000);</script>");
+		wv.getEngine().loadContent("<script>var i=0;setInterval(function(){console.log('abc',(i++));},2000);</script>");
 		// --
 //		wv.getEngine().load("https://html5test.com/");
 

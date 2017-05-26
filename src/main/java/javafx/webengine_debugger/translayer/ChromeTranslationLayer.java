@@ -1,5 +1,6 @@
 package javafx.webengine_debugger.translayer;
 
+import java.util.Collection;
 import java.util.Map;
 
 import javafx.webengine_debugger.json.Json;
@@ -111,7 +112,16 @@ public class ChromeTranslationLayer implements TranslationLayer{
 						//								}
 						//							}
 						
-						message.remove("parameters");
+						
+						Collection<Map> prs=(Collection<Map> )message.remove("parameters");
+						if(prs!=null){
+							String text="";
+							for(Map pr:prs){
+								String v=pr.get("value").toString();
+								text+=" "+v;
+							}
+							message.put("text",text);
+						}
 						message.remove("stackTrace");
 						message.remove("type");
 
