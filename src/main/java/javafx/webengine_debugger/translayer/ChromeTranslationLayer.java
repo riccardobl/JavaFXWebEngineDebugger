@@ -117,10 +117,13 @@ public class ChromeTranslationLayer implements TranslationLayer{
 						if(prs!=null){
 							String text="";
 							for(Map pr:prs){
-								String v=pr.get("value").toString();
-								text+=" "+v;
+								if(pr!=null){
+									String v=(String)pr.get("value");
+									if(v!=null)
+									text+=" "+v;
+								}
 							}
-							message.put("text",text);
+							if(!text.isEmpty())						message.put("text",text);
 						}
 						message.remove("stackTrace");
 						message.remove("type");
