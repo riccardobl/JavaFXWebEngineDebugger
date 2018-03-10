@@ -5,6 +5,7 @@ Small library that allows the debugging of javafx's WebView with Chrome devtools
 ## Gradle
 #### Repository 
 ```
+jcenter()
 maven { url "https://jitpack.io" }
 ```
 
