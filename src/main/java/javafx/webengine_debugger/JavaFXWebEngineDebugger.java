@@ -30,7 +30,7 @@ public class JavaFXWebEngineDebugger{
 				if(d!=null&&d.isEnabled()){
 					String dx=data;
 					if(_TRANSLAYER!=null)dx=_TRANSLAYER.in(dx);
-					System.out.println("<<< "+dx);
+//					System.out.println("<<< "+dx);
 					d.sendMessage(dx);
 				}else{
 					System.err.println("Debugger not available");
@@ -53,7 +53,7 @@ public class JavaFXWebEngineDebugger{
 		d.setMessageCallback((data) -> {
 			String dx=data;
 			if(_TRANSLAYER!=null)dx=_TRANSLAYER.out(dx);
-			System.out.println(">>> "+dx);
+//			System.out.println(">>> "+dx);
 			_SERVER.sendData(dx);
 			return null;
 		});

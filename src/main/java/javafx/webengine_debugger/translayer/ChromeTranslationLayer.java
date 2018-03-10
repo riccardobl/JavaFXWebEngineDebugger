@@ -118,9 +118,12 @@ public class ChromeTranslationLayer implements TranslationLayer{
 							String text="";
 							for(Map pr:prs){
 								if(pr!=null){
-									String v=(String)pr.get("value");
-									if(v!=null)
-									text+=" "+v;
+									Object o=pr.get("value");
+									if(o!=null){
+										String v=o.toString();
+										if(v!=null)
+										text+=" "+v;
+									}
 								}
 							}
 							if(!text.isEmpty())						message.put("text",text);
